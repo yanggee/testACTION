@@ -27,7 +27,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: git clone https://tentech:b78abd7d5df0890e609b87d2ad2af787@gitee.com/tentech/flowhub-gui.git
+        run: | 
+          git clone https://tentech:b78abd7d5df0890e609b87d2ad2af787@gitee.com/tentech/flowhub-gui.git
+          ls -la
+
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
