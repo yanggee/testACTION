@@ -28,9 +28,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         env:
-          ACCESS_TOKEN: ${{ app_token.TOKEN }}
+          ACCESS_TOKEN:  ${{ secrets.token }}
         run: | 
-          git clone https://tentech:$TOKEN@gitee.com/tentech/flowhub-gui.git
+          git clone https://tentech:${{ACCESS_TOKEN}}@gitee.com/tentech/flowhub-gui.git
           cd ./flowhub-gui
           npm i
           npm install --global electron-builder
