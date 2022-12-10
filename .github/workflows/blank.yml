@@ -22,10 +22,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        name: 'Checkout'
 
-      # Runs a single command using the runners shell
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
@@ -37,11 +36,8 @@ jobs:
           electron-builder -l
           mv ../build/*.AppImage ../../FlowhubBrowser.AppImage
 
-      - use: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
           name: FlowhubBrowser.AppImage
           path:  ${{ github.workspace }}/package
         name: upload package
-
-
-
