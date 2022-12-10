@@ -40,6 +40,8 @@ jobs:
           npm install --global electron-builder
           npm run build
           cd ./dist
+          pwd && ls -la
           electron-builder -l
+          cd ../ &&  ls -la && pwd 
           mv ../build/*.AppImage ../../FlowhubBrowser.AppImage
           ls -la 
