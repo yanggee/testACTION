@@ -15,11 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   buildForUbuntu:
     runs-on: Ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
         name: 'Checkout'
@@ -40,7 +37,7 @@ jobs:
           pwd && ls -la | grep "FlowHubBrowser"
       - name: upload file
         run: |
-          sudo apt install curl zip unzip
+          sudo apt install curl
           curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
           sudo chmod 777 ossutil
           cp ./flowhub-gui/FlowHubBrowser.zip ./
