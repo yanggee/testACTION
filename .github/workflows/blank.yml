@@ -29,7 +29,7 @@ jobs:
       - name: Upload
         run: |
           sudo apt install curl 
-          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutilmac64
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
           sudo chmod 777 ossutil
           ./ossutil -help
       - name: Clone and package
