@@ -47,4 +47,4 @@ jobs:
           sudo chmod 777 ossutil
           zip FlowHubBrowser.zip ./flowhub-gui/*.AppImage
           echo "zip File: " && ls -la 
-          ./ossutil -i ${{secrets.ACCESSKEY}} -k ${{secrets.ACCESSSECRET}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowhubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowhubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com
