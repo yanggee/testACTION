@@ -34,8 +34,8 @@ jobs:
 
           mv build/*.AppImage ./ 
           choco install zip unzip
-          zip FlowHubBrowser.zip *.AppImage
-          pwd && ls -la | grep "FlowHubBrowser"
+          zip FlowHubBrowser.zip *.exe
+          pwd && dir
       - name: upload file
         run: |
           choco install curl 
