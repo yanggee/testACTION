@@ -24,7 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: 'Checkout'
-
+        uses: actions/setup-node@v1
+        with:
+        node-version: '14.18'
+      - name: Upload
+        run: |
+          sudo apt install curl 
+          curl -v
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
@@ -35,9 +41,4 @@ jobs:
           cd ./dist
           electron-builder -l
           mv ../build/*.AppImage ../../FlowhubBrowser.AppImage
-
-      - uses: actions/upload-artifact@v1
-        with:
-          name: FlowhubBrowser.AppImage
-          path:  ${{ github.workspace }}
-        name: upload package
+          ls -la 
