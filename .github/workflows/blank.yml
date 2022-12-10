@@ -44,3 +44,6 @@ jobs:
           git add FlowhubBrowser.AppImage
           git commit -m "package"
           git push
+
+
+          
