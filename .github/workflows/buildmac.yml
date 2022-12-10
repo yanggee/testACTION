@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: ElectronBuild for ubuntu
+name: ElectronBuild for mac
 
 # Controls when the workflow will run
 on:
@@ -15,8 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  buildForUbuntu:
-    runs-on: Ubuntu-latest
+  buildForWindows:
+    runs-on: macos-11
     steps:
       - uses: actions/checkout@v3
         name: 'Checkout'
@@ -33,12 +33,13 @@ jobs:
           cd ./dist && electron-builder -l && cd ..
 
           mv build/*.AppImage ./ 
+          brew install zip unzip
           zip FlowHubBrowser.zip *.AppImage
           pwd && ls -la | grep "FlowHubBrowser"
       - name: upload file
         run: |
-          sudo apt install curl
-          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
-          sudo chmod 777 ossutil
+          brew install curl 
+          curl -o ossutil64 https://gosspublic.alicdn.com/ossutil/1.7.14/ossutilmac64?spm=a2c4g.11186623.0.0.128b2cb7B5dg1p
+          chmod 777 ossutil64
           cp ./flowhub-gui/FlowHubBrowser.zip ./
-          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowHubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com -f
+          ./ossutil64 -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/windows/FlowHubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com -f
