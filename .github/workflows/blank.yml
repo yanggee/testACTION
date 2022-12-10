@@ -16,9 +16,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  buildForUbuntu:
+    runs-on: Ubuntu 20.04	
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,7 +29,9 @@ jobs:
       - name: Upload
         run: |
           sudo apt install curl 
-          curl -v
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutilmac64
+          sudo chmod 777 ossutil
+          ./ossutil -help
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
