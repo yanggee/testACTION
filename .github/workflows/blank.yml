@@ -26,11 +26,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.18'
-      - name: Upload
-        run: |
-          sudo apt install curl 
-          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
-          sudo chmod 777 ossutil
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
@@ -44,3 +39,11 @@ jobs:
           cd ../ &&  ls -la && pwd 
           mv build/*.AppImage ./
           ls -la 
+      - name: install cul and ossutil
+        run: |
+          pwd && ls -la 
+          sudo apt install curl zip unzip
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
+          sudo chmod 777 ossutil
+          zip FlowHubBrowser.zip *.AppImage
+          ./ossutil -i ${{secrets.ACCESSKEY}} -k ${{secrets.ACCESSSECRET}} cp .\FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowhubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com
