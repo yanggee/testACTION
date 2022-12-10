@@ -39,5 +39,5 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: FlowhubBrowser.AppImage
-          path:  ${{ github.workspace }}/package
+          path:  ${{ github.workspace }}
         name: upload package
