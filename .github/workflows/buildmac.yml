@@ -30,9 +30,9 @@ jobs:
           npm i
           npm install --global electron-builder
           npm run build
-          cd ./dist && electron-builder -l && cd ..
+          cd ./dist && electron-builder -m && cd ..
 
-          mv build/*.AppImage ./ 
+          mv build/*.dmg ./ 
           brew install zip unzip
           zip FlowHubBrowser.zip *.dmg
           pwd && ls -la | grep "FlowHubBrowser"
