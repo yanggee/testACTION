@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  buildForUbuntu:
+  BuildForUbuntu:
     runs-on: Ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
