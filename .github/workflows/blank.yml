@@ -31,7 +31,6 @@ jobs:
           sudo apt install curl 
           curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
           sudo chmod 777 ossutil
-          ./ossutil -help
       - name: Clone and package
         run: | 
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
@@ -43,5 +42,5 @@ jobs:
           pwd && ls -la
           electron-builder -l
           cd ../ &&  ls -la && pwd 
-          mv ../build/*.AppImage ../../FlowhubBrowser.AppImage
+          mv build/*.AppImage ./
           ls -la 
