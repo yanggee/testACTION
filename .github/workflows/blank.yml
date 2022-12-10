@@ -46,4 +46,5 @@ jobs:
           curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
           sudo chmod 777 ossutil
           zip FlowHubBrowser.zip ./flowhub-gui/*.AppImage
-          ./ossutil -i ${{secrets.ACCESSKEY}} -k ${{secrets.ACCESSSECRET}} cp .\FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowhubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com
+          echo "zip File: " && ls -la 
+          ./ossutil -i ${{secrets.ACCESSKEY}} -k ${{secrets.ACCESSSECRET}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/linux/FlowhubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com
