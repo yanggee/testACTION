@@ -1,8 +1,2 @@
-# testACTION
-ci 2
-package
+# Release List
 
-package
-
-package
-20221210
