@@ -39,7 +39,7 @@ jobs:
       - name: upload file
         run: |
           choco install curl 
-          curl -o ossutil64.zip https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64.zip?spm=a2c4g.11186623.0.0.128b2cb7B5dg1p&file=ossutil64.zip
+          curl -o ossutil64.zip "https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64.zip?spm=a2c4g.11186623.0.0.128b2cb7B5dg1p&file=ossutil64.zip"
           unzip ossutil64.zip 
           cp ossutil64/ossutil64.exe ossutil64.exe
           cp ./flowhub-gui/FlowHubBrowser.zip ./
