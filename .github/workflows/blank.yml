@@ -28,8 +28,6 @@ jobs:
           node-version: '14.18'
       - name: Clone and package
         run: | 
-          echo ${{secrets.accesskey}}
-          echo ${{secrets.accesssecret}}
           git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
           cd ./flowhub-gui
           npm i
