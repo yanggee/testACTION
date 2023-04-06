@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: ElectronBuild for mac
+name: ElectronBuild for mac manual
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "private_paper" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "private_paper" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,4 +42,4 @@ jobs:
           curl -o ossutil64 https://gosspublic.alicdn.com/ossutil/1.7.14/ossutilmac64?spm=a2c4g.11186623.0.0.128b2cb7B5dg1p
           chmod 777 ossutil64
           cp ./flowhub-gui/FlowHubBrowser.zip ./
-          ./ossutil64 -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish/GUI/mac/FlowHubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com -f
+          ./ossutil64 -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish_test/GUI/mac/FlowHubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com -f
