@@ -2,9 +2,6 @@
 
 name: ElectronBuild for mac manual
 
-env: 
-  branch: "develop"
-
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -28,7 +25,7 @@ jobs:
           node-version: '14.18'
       - name: Clone and package
         run: | 
-          git clone -b $branch https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
+          git clone -b develop https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
           cd ./flowhub-gui
           npm i
           npm install --global electron-builder
