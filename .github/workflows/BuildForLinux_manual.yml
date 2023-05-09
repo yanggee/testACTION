@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ElectronBuild for Linux manual
+
+env: 
+  branch: "develop"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ $branch ]
+  pull_request:
+    branches: [ $branch ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  BuildForUbuntu:
+    runs-on: Ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        name: 'Checkout'
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.18'
+      - name: Clone and package
+        run: | 
+          git clone -b $branch https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
+          cd ./flowhub-gui
+          npm i
+          npm install --global electron-builder
+          npm run build
+          cd ./dist && electron-builder -l && cd ..
+
+          mv build/*.AppImage ./ 
+          zip FlowHubBrowser.zip *.AppImage
+          pwd && ls -la | grep "FlowHubBrowser"
+      - name: upload file
+        run: |
+          sudo apt install curl
+          curl -o ossutil https://gosspublic.alicdn.com/ossutil/1.7.14/ossutil64?spm=a2c4g.11186623.0.0.128b7786ZaZdXf
+          sudo chmod 777 ossutil
+          cp ./flowhub-gui/FlowHubBrowser.zip ./
+          ./ossutil -i ${{secrets.accesskey}} -k ${{secrets.accesssecret}} cp FlowHubBrowser.zip oss://flowhub-master/publish_test/GUI/linux/FlowHubBrowser.zip -e http://oss-cn-hangzhou.aliyuncs.com -f
