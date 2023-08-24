@@ -25,7 +25,7 @@ jobs:
           node-version: '14.18'
       - name: Clone and package
         run: | 
-          git clone https://tentech:${{secrets.token}}@gitee.com/tentech/flowhub-gui.git
+          git clone -b master https://xuyunshengwu:${{secrets.token}}@gitee.com/xuyunshengwu/flowhub-gui.git
           cd ./flowhub-gui
           npm i
           npm install --global electron-builder
